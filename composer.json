@@ -1,0 +1,20 @@
+{
+    "name": "helsingborg-stad/municipio-search",
+    "description": "Typesense-powered client-side search for Municipio sites",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "helsingborg-stad/component-library": "^4.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MunicipioSearch\\": "source/php/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

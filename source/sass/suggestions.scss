@@ -1,0 +1,52 @@
+.municipio-search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: calc(var(--base, 8px) * 0.5);
+  background: var(--color-background-card, #fff);
+  border: 1px solid var(--municipio-search-border-color, #eee);
+  border-radius: calc(var(--base, 8px) * 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.municipio-search-suggestion__item {
+  display: block;
+  padding: calc(var(--base, 8px) * 3);
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--municipio-search-border-color, #eee);
+  transition: background-color 0.2s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #0000000d;
+    outline: none;
+  }
+}
+
+.municipio-search-suggestion__title {
+  display: block;
+  font-weight: 600;
+  margin-bottom: calc(var(--base, 8px) * 0.5);
+}
+
+.municipio-search-suggestion__meta {
+  display: block;
+  font-size: 0.85em;
+  color: var(--color-text-muted, #666);
+}
+
+.municipio-search-suggestions__empty,
+.municipio-search-suggestions__error {
+  padding: calc(var(--base, 8px) * 3);
+  color: var(--color-text-muted, #666);
+  font-size: 0.9em;
+}
