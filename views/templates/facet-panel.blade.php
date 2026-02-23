@@ -6,14 +6,14 @@
 ])
 @element(['classList' => ['municipio-search__facet-group']])
     @typography([
-        'variant' => 'h2',
-        'element' => 'h2',
+        'variant' => 'meta',
+        'element' => 'span',
         'classList' => ['municipio-search__facet-group-heading']
     ])
         {SEARCH_FACET_LABEL}
     @endtypography
 
-    @element(['classList' => ['municipio-search__facet-group-content']])
+    @element(['classList' => ['municipio-search__facet-group-options']])
         {SEARCH_FACET_ITEMS}
     @endelement
 @endelement

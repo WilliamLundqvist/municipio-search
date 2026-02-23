@@ -140,7 +140,7 @@ function init(): void {
     if (!noticeEl) return;
     const hasFacetsToShow = facetCounts.some((fc) => fc && Array.isArray(fc.counts) && fc.counts.length > 0);
     noticeEl.hidden = hasFacetsToShow;
-    noticeEl.setAttribute('aria-hidden', String(!hasFacetsToShow));
+    noticeEl.setAttribute('aria-hidden', String(hasFacetsToShow));
   }
 
   function renderFacets(

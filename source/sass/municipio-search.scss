@@ -1,4 +1,4 @@
-@use 'sass:math';
+@use "sass:math";
 
 :root {
   --municipio-search-border-color: #00000011;
@@ -43,99 +43,50 @@
     border: 1px solid var(--municipio-search-border-color, #eee);
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 
 .municipio-search__facets {
-  background-color: inherit;
-  z-index: 1000;
-  border-top-left-radius: inherit;
-  border-bottom-left-radius: inherit;
-  min-width: calc(var(--base, 8px) * 30);
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--base, 8px) * 2);
+  padding-top: calc(var(--base, 8px) * 2);
+  .c-element[data-js-search-page-facets] {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .municipio-search__facet-group {
   position: relative;
-  padding: calc(var(--base, 8px) * 3);
-
-  + .municipio-search__facet-group {
-    border-top: 1px solid var(--municipio-search-border-color, #eee);
-  }
 
   &-heading {
-    margin-bottom: calc(var(--base, 8px) * 1.5);
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-bottom: calc(var(--base, 8px) * 0.5);
+    color: var(--color-text-muted, #666);
+  }
+
+  &-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--base, 8px) * 1);
   }
 }
 
 .facet-item__option {
-  max-width: 100%;
   white-space: nowrap;
-
-  .c-option__checkbox--label {
-    width: 100%;
-  }
+  width: fit-content;
 
   .c-option__checkbox--label-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: flex;
-    justify-content: space-between;
-    gap: calc(var(--base, 8px) * 2);
+    gap: calc(var(--base, 8px) * 0.5);
   }
 
   .facet-item__count {
-    --bg-color: var(--c-paper-color-background, var(--color-background-card, var(--color-white, #ffffff)));
-    background-color: var(--bg-color);
-    position: absolute;
-    right: 0;
-    padding-left: calc(var(--base, 8px) * 2);
-    height: 100%;
-    pointer-events: none;
-
-    &::before {
-      content: '';
-      display: block;
-      width: calc(var(--base, 8px) * 3);
-      background: linear-gradient(90deg, transparent 0%, var(--bg-color) 100%);
-      position: absolute;
-      top: 0;
-      left: calc(var(--base, 8px) * -3);
-      bottom: 0;
-    }
-  }
-}
-
-@media screen and (max-width: 56em) {
-  .municipio-search__facets {
-    position: fixed;
-    inset: calc(var(--base, 8px) * 11) calc(var(--base, 8px) * 3) calc(var(--base, 8px) * 3) calc(var(--base, 8px) * 3);
-    width: calc(100% - var(--base, 8px) * 3 * 2);
-    max-width: unset;
-    background-color: #ffffffec;
-    filter: var(--drop-shadow-2, drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.1)));
-    transform: translateY(calc(var(--base, 8px) * 10)) scaleY(1.1);
-    transition: opacity 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    z-index: 1500;
-    overflow-y: auto;
-    opacity: 0;
-    backdrop-filter: blur(8px);
-    border-radius: inherit;
-
-    &.is-open {
-      transform: translateY(0) scaleY(1);
-      opacity: 1;
-    }
-
-    &:not(.is-open) {
-      display: none;
-    }
-  }
-}
-
-@media screen and (min-width: 56em) {
-  .municipio-search__facets {
-    width: 300px;
+    opacity: 0.6;
+    font-size: 0.9em;
   }
 }
 
@@ -143,7 +94,6 @@
   background-color: #0000000d;
   padding: calc(var(--base, 8px) * 3);
   position: relative;
-  flex-grow: 1;
   gap: calc(var(--base, 8px) * 4);
   display: flex;
   flex-direction: column;
@@ -159,18 +109,6 @@
   font-style: normal;
 }
 
-@media screen and (min-width: 56em) {
-  .municipio-search__results::before {
-    content: '';
-    width: var(--municipio-search-shadow-separator-size, 12px);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(90deg, #0000000d, transparent);
-  }
-}
-
 .municipio-search__results .c-card--has-image .c-card__paint-container {
   flex-direction: row-reverse;
 }
@@ -181,14 +119,14 @@
   }
 }
 
-.municipio-search__facet-notice {
+#municipio-search__facet-notice {
   color: var(--color-text-muted, #666);
   border: 1px solid var(--municipio-search-border-color, #eee);
   background-color: #0000000d;
   display: none;
   font-size: 0.95em;
 
-  &[aria-hidden='false'] {
+  &[aria-hidden="false"] {
     display: grid;
   }
 }
@@ -246,12 +184,7 @@
 }
 
 .u-preloader {
-  background: linear-gradient(
-    90deg,
-    #eee 25%,
-    #f5f5f5 50%,
-    #eee 75%
-  );
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
   background-size: 200% 100%;
   animation: municipio-search-shimmer 1.5s infinite;
 }
